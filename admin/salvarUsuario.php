@@ -57,14 +57,19 @@ if ( $_POST ) {
 		//print_r( $_POST );
 	$id = trim( $_POST["id"] );
 	$nome = trim( $_POST["nome"] );
-	$dataNasc = trim( $_POST["dataNasc"]);
 	$email = trim( $_POST["email"] );
+	$cpf = trim( $_POST["cpf"] );
+	$dataNasc = trim( $_POST["dataNasc"]);
 	$dataCad = trim( $_POST["dataCad"] );
-	$ativo = trim( $_POST["ativo"] ); 
-	$tipo = trim( $_POST["tipo"]);
+	$cep = trim( $_POST["cep"] );
+	$endereco = trim( $_POST["endereco"] );
+	$numero = trim( $_POST["numero"] );
 	$idcategoria = trim( $_POST["idcategoria"] );
 	$login = trim( $_POST["login"] );
 	$senha = trim( $_POST["senha"] );
+	$tipo = trim( $_POST["tipo"]);
+	$ativo = trim( $_POST["ativo"] ); 
+
 	
 	$imagem = $nomef;
 	$dataNasc = formatardata( $dataNasc );
@@ -107,57 +112,69 @@ if ( $_POST ) {
 			//verificar se o id esta vazio - insert
 		if ( empty ( $id ) ) {
 				//gravar no banco de dados
-			$sql = "insert into usuario (id, nome, dataNasc, email, imagem, dataCad, ativo, tipo, idcategoria, login, senha)
-			values (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			$sql = "insert into usuario (id, nome, email, cpf, dataNasc, dataCad, cep, endereco, numero, imagem, idcategoria, login, senha, tipo, ativo)
+			values (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			$consulta = $pdo->prepare($sql);
 				//passar o parametro
 			$consulta->bindParam(1, $nome);
-			$consulta->bindParam(2, $dataNasc);
-			$consulta->bindParam(3, $email);
-			$consulta->bindParam(4, $imagem);
+			$consulta->bindParam(2, $email);
+			$consulta->bindParam(3, $cpf);
+			$consulta->bindParam(4, $dataNasc);
 			$consulta->bindParam(5, $dataCad);
-			$consulta->bindParam(6, $ativo);
-			$consulta->bindParam(7, $tipo);
-			$consulta->bindParam(8, $idcategoria);
-			$consulta->bindParam(9, $login);
-			$consulta->bindParam(10, $senha);
+			$consulta->bindParam(6, $cep);
+			$consulta->bindParam(7, $endereco);
+			$consulta->bindParam(8, $numero);
+			$consulta->bindParam(9, $imagem);
+			$consulta->bindParam(10, $idcategoria);
+			$consulta->bindParam(11, $login);
+			$consulta->bindParam(12, $senha);
+			$consulta->bindParam(13, $tipo);
+			$consulta->bindParam(14, $ativo);
+	
 		} else {
 			
 			if ( empty ( $senha ) ) {
 					//dar update
 				$sql = "update usuario 
-				set nome = ?, dataNasc = ?, email = ?, imagem = ?, dataCad = ?, ativo = ?, tipo = ?, idcategoria = ?, login = ?
+				set nome = ?, email = ?, cpf = ?, dataNasc = ?, dataCad = ?, cep = ?, endereco = ?, numero = ?, imagem = ?, idcategoria = ?, login = ?, tipo = ?, ativo = ?
 				where id = ? 
 				limit 1";
-				$consulta = $pdo->prepare( $sql );
 				$consulta->bindParam(1, $nome);
-				$consulta->bindParam(2, $dataNasc);
-				$consulta->bindParam(3, $email);
-				$consulta->bindParam(4, $imagem);
+				$consulta->bindParam(2, $email);
+				$consulta->bindParam(3, $cpf);
+				$consulta->bindParam(4, $dataNasc);
 				$consulta->bindParam(5, $dataCad);
-				$consulta->bindParam(6, $ativo);
-				$consulta->bindParam(7, $tipo);
-				$consulta->bindParam(8, $idcategoria);
-				$consulta->bindParam(9, $login);
-				$consulta->bindParam(10, $id );
+				$consulta->bindParam(6, $cep);
+				$consulta->bindParam(7, $endereco);
+				$consulta->bindParam(8, $numero);
+				$consulta->bindParam(9, $imagem);
+				$consulta->bindParam(10, $idcategoria);
+				$consulta->bindParam(11, $login);
+				$consulta->bindParam(12, $tipo);
+				$consulta->bindParam(13, $ativo);
+				$consulta->bindParam(14, $id );
 			} else {
 					//dar update
 				$sql = "update usuario 
-				set nome = ?, dataNasc = ?, email = ?, imagem = ?, dataCad = ?, ativo = ?, tipo = ?, idcategoria = ?, login = ?, senha = ?
+				set nome = ?, email = ?, cpf = ?, dataNasc = ?, dataCad = ?, cep = ?, endereco = ?, numero = ?, imagem = ?, idcategoria = ?, login = ?, senha = ?, tipo = ?, ativo = ? 
 				where id = ? 
 				limit 1";
 				$consulta = $pdo->prepare( $sql );
 				$consulta->bindParam(1, $nome);
-				$consulta->bindParam(2, $dataNasc);
-				$consulta->bindParam(3, $email);
-				$consulta->bindParam(4, $imagem);
+				$consulta->bindParam(2, $email);
+				$consulta->bindParam(3, $cpf);
+				$consulta->bindParam(4, $dataNasc);
 				$consulta->bindParam(5, $dataCad);
-				$consulta->bindParam(6, $ativo);
-				$consulta->bindParam(7, $tipo);
-				$consulta->bindParam(8, $idcategoria);
-				$consulta->bindParam(9, $login);
-				$consulta->bindParam(10, $senha);
-				$consulta->bindParam(11, $id );
+				$consulta->bindParam(6, $cep);
+				$consulta->bindParam(7, $endereco);
+				$consulta->bindParam(8, $numero);
+				$consulta->bindParam(9, $imagem);
+				$consulta->bindParam(10, $idcategoria);
+				$consulta->bindParam(11, $login);
+				$consulta->bindParam(12, $senha);
+				$consulta->bindParam(13, $tipo);
+				$consulta->bindParam(14, $ativo);
+				$consulta->bindParam(15, $id );
 			}
 
 		}

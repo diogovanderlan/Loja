@@ -2,7 +2,7 @@
 	//incluir o menu
 include "menu.php";
 
-$id = $nome = $dataNasc = $email = $imagem = $dataCad = $ativo = $tipo = $idcategoria = $login = "";
+$id = $nome = $email = $cpf = $dataNasc = $dataCad = $cep = $endereco = $numero = $imagem = $idcategoria = $login =$senha = $tipo = $ativo   = "";
 
 $dataCad = date_default_timezone_set('America/Sao_Paulo'); 
 $dataCad = date("d/m/Y");
@@ -23,16 +23,23 @@ if ( isset ( $_GET["id"] ) ) {
 		//separar os dados
 	$dados = $consulta->fetch(PDO::FETCH_OBJ);
 
-	$id = $dados->id;
-	$nome = $dados->nome;
-	$dataNasc = $dados->dataNasc;
-	$email = $dados->email;
-	$imagem = $dados->imagem;
-	$dataCad = $dados->dataCad;
-	$ativo = $dados->ativo;
-	$tipo = $dados->tipo;
-	$idcategoria = $dados->idcategoria;
-	$login = $dados->login;
+	$id 			= $dados->id;
+	$nome 			= $dados->nome;
+	$email 			= $dados->email;
+	$cpf 			= $dados->cpf;
+	$dataNasc		= $dados->dataNasc;
+	$dataCad 		= $dados->dataCad;
+	$cep 			= $dados->cep;
+	$endereco		= $dados->endereco;
+	$numero 		= $dados->numero;
+	$imagem 		= $dados->imagem;
+	$idcategoria 	= $dados->idcategoria;
+	$login 			= $dados->login;
+	$senha 			= $dados->senha;
+	$tipo 			= $dados->tipo;
+	$ativo			= $dados->ativo;
+	
+	
 	$dataNasc = date('d/m/Y', strtotime($dataNasc));
 	$dataCad = date('d/m/Y', strtotime($dataCad));
 
@@ -110,19 +117,6 @@ if ( isset ( $_GET["id"] ) ) {
 	</div>
 
 	<div class="control-group">
-		<label for="dataNasc">Data de Nascimento</label>
-		<div class="controls">
-			<input type="text" 
-			name="dataNasc"
-			class="form-control"
-			required value="<?=$dataNasc;?>"
-			data-validation-required-message="Preencha o data de Nascimento"
-			data-mask="99/99/9999"
-			onblur="verificaData(this.value)">
-		</div>
-	</div>
-
-	<div class="control-group">
 		<label for="email">
 		E-mail do Usuário:</label>
 		<div class="controls">
@@ -135,6 +129,73 @@ if ( isset ( $_GET["id"] ) ) {
 		</div>
 	</div>
 
+	<div class="control-group">
+		<label for="cpf">
+		CPF do Usuario:</label>
+		<div class="controls">
+			<input type="text" 
+			name="cpf" placeholder="000.000.000-00"
+			class="form-control" 
+			required
+			data-validation-required-message="Preencha o CPF"
+			data-mask="999.999.999-99"
+			value="<?=$cpf;?>"> 
+		</div>
+	</div>
+
+
+	<div class="control-group">
+		<label for="dataNasc">Data de Nascimento</label>
+		<div class="controls">
+			<input type="text" 
+			name="dataNasc"
+			class="form-control"
+			required value="<?=$dataNasc;?>"
+			data-validation-required-message="Preencha o data de Nascimento"
+			data-mask="99/99/9999"
+			onblur="verificaData(this.value)">
+		</div>
+	</div>
+
+
+	<div class="control-group">
+		<label for="dataNascimento">Data de Cadastro</label>
+		<div class="controls">
+			<input type="text" 
+			name="dataCad" readonly
+			class="form-control"
+			required value="<?=$dataCad;?>"
+			data-validation-required-message="Preencha o dataCad"
+			data-mask="99/99/9999">
+		</div>
+	</div>	
+
+	<div class="control-group">
+		<label for="endereco">
+		Endereço do Usuario:</label>
+		<div class="controls">
+			<input type="text" 
+			name="endereco" placeholder="R. av brasil"
+			class="form-control" 
+			required
+			data-validation-required-message="Preencha o endereço"
+			value="<?=$endereco;?>">
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label for="numero">
+		Numero da Casa</label>
+		<div class="controls">
+			<input type="text" 
+			name="numero" placeholder="N"
+			class="form-control" 
+			required
+			data-validation-required-message="Preencha o Numero da casa"
+			value="<?=$numero;?>">
+		</div>
+	</div>
+	
 	<div class="control-group">
 		<label for="imagem">
 			Imagem (Foto JPG com largura mínima de 800px):
@@ -149,18 +210,7 @@ if ( isset ( $_GET["id"] ) ) {
 			value="<?=$imagem;?>">
 		</div>
 	</div>
-
-	<div class="control-group">
-		<label for="dataNascimento">Data de Cadastro</label>
-		<div class="controls">
-			<input type="text" 
-			name="dataCad" readonly
-			class="form-control"
-			required value="<?=$dataCad;?>"
-			data-validation-required-message="Preencha o dataCad"
-			data-mask="99/99/9999">
-		</div>
-	</div>			
+		
 
 	<div class="control-group">
 		<label for="login">
