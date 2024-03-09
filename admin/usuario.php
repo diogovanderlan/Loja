@@ -59,10 +59,10 @@ if ( isset ( $_GET["id"] ) ) {
 	<fieldset>
 		<legend>Preencha os campos:</legend>
 
-		<div class="control-group" style="display: none;">
+		<div class="control-group">
 			<label for="id">ID:</label>
 			<div class="controls">
-				<input style="display: none;" type="text" name="id"
+				<input type="text" name="id"
 				class="form-control" id="id"
 				readonly
 				value="<?=$id;?>">
@@ -236,10 +236,8 @@ if ( isset ( $_GET["id"] ) ) {
 	$("#tipo").val("<?=$tipo;?>");
 </script>
 </div>
-<br><br>
 
 <button type="submit" class="btn btn-success">Salvar Dados</button>
-<br><br>
 
 
 </fieldset>
@@ -295,3 +293,9 @@ if ( isset ( $_GET["id"] ) ) {
 
 	</body>
 	</html>
+
+
+
+
+
+

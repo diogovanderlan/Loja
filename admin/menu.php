@@ -21,7 +21,7 @@ function formatardata($data) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Vantech</title>
+  <title>Loja</title>
   <meta charset="utf-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,6 +31,12 @@ function formatardata($data) {
   <link href="style.css" rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script>
+    $(function () {
+      //validação dos campos
+      $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); 
+    } );
+  </script>
  
 </head>
 <body>
