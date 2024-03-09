@@ -6,7 +6,7 @@ session_start();
 if ( $_POST ) {
 	
 		//conectar no banco de dados
-	include "conecta.php";
+	include "../config/conecta.php";
 
 		//duas variaveis
 	$login = $senha = "";

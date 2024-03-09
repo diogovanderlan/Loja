@@ -12,7 +12,7 @@ if ( !isset( $_SESSION["admin"]["id"] ) ) {
 }
 
     //incluir o arquivo para conectar no banco
-include "conecta.php";
+include "../config/conecta.php";
 
 ?>
 
